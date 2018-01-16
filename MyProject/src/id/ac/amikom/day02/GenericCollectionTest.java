@@ -31,7 +31,7 @@ public class GenericCollectionTest {
 		System.out.println(myMap.entrySet());
 		
 		List<?> xx = new ArrayList<>();
-		xx.add("satu");
+//		xx.add("satu");
 		
 	}
 }
