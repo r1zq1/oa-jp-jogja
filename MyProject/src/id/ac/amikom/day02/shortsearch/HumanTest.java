@@ -30,7 +30,7 @@ public class HumanTest {
 			((o1, o2)->o1.getName().compareTo(o2.getName()));
 		humans.sort(nameComp.reversed());
 		System.out.println(humans);		
-		
+		 
 		System.out.println("Filter, case: mencari human age > 20");
 		List<Human> olderHuman = 
 			humans.stream()
