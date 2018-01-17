@@ -140,6 +140,21 @@ public class DVDUI extends JFrame {
 		});
 		btnDisplayAll.setBounds(21, 201, 206, 23);
 		getContentPane().add(btnDisplayAll);
+		
+		JButton btnDisplayByGenre = new JButton("Display By Genre");
+		btnDisplayByGenre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ArrayList<DVDItem> items = service.getDVDItemByGenre(cbGenre.getSelectedItem().toString());
+					System.out.println("Jumlah DVD Genre "+ cbGenre.getSelectedItem().toString() +": " + items.size());
+					System.out.println(items);
+				} catch (DVDException e1) {
+					e1.printStackTrace();
+				}				
+			}
+		});
+		btnDisplayByGenre.setBounds(254, 201, 207, 23);
+		getContentPane().add(btnDisplayByGenre);
 	}
 	private void clearField() {
 		tfJudulDVD.setText("");

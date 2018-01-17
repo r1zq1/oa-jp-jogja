@@ -53,8 +53,7 @@ public class DVDServiceImpl implements DVDLibraryService{
 		if(!result) {
 			throw new DVDException(item.getJudul() + " tidak ditemukan");			
 		} else {
-			dvds.remove(item);
-			
+			dvds.remove(item);			
 		}		
 	}
 
