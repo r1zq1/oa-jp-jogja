@@ -1,0 +1,290 @@
+JP Notes Jogja
+
+Github URL: https://github.com/r1zq1/oa-jp-jogja
+
+Day 1
+=====================================================================
+Java as a platform
+- Java SE -- desktop solutions
+- Java EE -- distributed applications
+- Java ME -- limited device
+
+Java App 		Native App
+-------- 		----------
+  JVM 			    OS
+--------
+  O S
+
+			JVM
+		   /  
+		JRE
+	   /   \
+	  /	    Standard Library
+   JDK
+      \
+       Tools: compiler, javadoc, jar tools, ...
+
+Data Type:
+- primitive
+	* integer: byte, short, int, long
+	* floating: float, double
+	* textual: char
+	* logical: boolean
+- reference
+	String, ArrayList, Customer, Mahasiswa, ...
+
+Variable:
+[modifier] type name [=initial_value];
+
+int nilai = 1000;
+double interest = 0.05;
+int x = 1_234_567;
+int phoneNumber = 62_274_123456;
+
+String a = "Hello";
+String b = "Hello";
+
+SDLC
+------------
+- analysis --- WHAT
+- design --- HOW
+- develop
+- test
+- deploy
+
+object 				class
+----------------	------------------
+- attribute 		- variable / field / property
+- behavior 			- method / procedure / function
+
+konvensi penulisan package: semuanya huruf kecil (lower case)
+							domain (dibalik)
+ 
+source code  -- compile 		--> byte code
+(*.java)        javac nama file 	(*.class)
+
+java [VM options] NamaClass [arguments]
+
+				Mutable 	Thread-Safe
+===============================================
+String  		   X  			X
+StringBuilder 	   V 		    X
+StringBuffer       V  		    V
+
+Membandingkan dua String
+- equality test (==) ==> tidak direkomendasikan
+		karena yang dibandingkan adalah lokasi object di heap area, bukan character yang menyusun string tersebut
+- equals() / equalsIgnorecase() : boolean
+		dua string dikatakan sama jika mengembalikan nilai true
+- compareTo() / compareToIgnorecase() : int
+		dua string dikatakan sama jika mengembalikan nilai 0
+
+operand1 & operand2
+
+operand1 && operand2
+
+if(boolean_expression) {
+	
+} else {
+	
+}
+
+switch(value) {
+	case c1:
+	case c2:
+	case c3:
+	default:
+}
+
+switch --- byte,short,int,char
+		   JDK 5 --> enum
+		   JDK 7 --> String
+
+looping:
+- for --> Nx
+	for(initial_expr ; boolean_expr ; alter_expr) {
+
+	}
+- while --> 0 - ~
+	while(boolean_expr) {
+
+	}
+- do .. while --> 1 - ~
+	do {
+
+	} while(boolean_expr);
+- enhanced for-loop --> memproses Array, Collections	
+	for(element : array/coll) {
+
+	}
+
+constructor
+=================
+block yang akan dipanggil setiap kali kita membuat instance dari sebuah class
+setiap class PASTI memiliki constructor
+jika tidak dituliskan secara explicit, maka akan dibuatkan DEFAULT CONSTRUCTOR
+DEFAULT CONSTRUCTOR tidak memiliki parameter/argument dan body-nya kosong
+penulisan constructor mirip dengan method, ada 2 hal yang membedakannya:
+- constructor nama nya sama dengan nama class
+- constructor tidak memiliki return type
+jika menuliskan constructor secara explicit maka DEFAULT CONSTRUCTOR akan hilang, DEFAULT CONSTRUCTOR masih dapat digunakan dengan cara melakukan OVERLOADING CONSTRUCTOR
+Syarat Overloading:
+- parameter harus berbeda : beda type, beda jumlah, beda urutan
+constructor dapat digunakan untuk meng-inisialisasi attribute yang dimiliki oleh sebuah object
+
+method
+
+[modifier] return_type nama ([parameters]) {
+	
+}
+
+return_type method: void (tidak mengembalikan nilai)
+					primitive
+					reference
+
+encapsulation
+-----------------
+"membungkus"
+di Java kita HARUS mendeklarasikan variable dan method di dalam class
+dengan encapsulation kita dapat menyembunyikan informasi (information hiding), maksudnya bukan berarti data tidak boleh digunakan, tetapi supaya data digunakan sesuai dengan aturan yang sudah ditetapkan oleh sistem/aplikasi
+dilakukan dengan:
+- menggunakan access modifier 'private' pada variable
+- menyediakan method (yang 'public'):
+	* accessor / getter : digunakan untuk mengambil nilai
+	* mutator / setter : digunakan untuk mengubah nilai
+
+access 			same 	 same 		inheri-  	univer-
+modifier 		class 	 package 	tance 		sal
+--------------------------------------------------------------------
+private  		  V 		X  		   X 		  X
+[default]  		  V 		V 		   X 		  X
+protected  		  V 		V 		   V 		  X
+public  		  V 		V 		   V 		  V
+
+comments / remark:
+- single line comment   //
+
+- multiple line comment 	/*
+
+							*/
+
+- documentation comment 	/**
+							*
+							*/		
+
+			size 		tipe element
+-----------------------------------------------------------			
+Array 		fixed 		primitive, reference
+ArrayList 	dynamic 	reference
+
+setiap tipe data primitive, memiliki tipe reference nya, diistilahkan dengan wrapper class
+
+primitive 			Wrapper --> semua ada di java.lang
+------------------------------------------------------
+boolean 			Boolean
+byte 				Byte
+short 				Short
+int 				Integer
+long 				Long
+float 				Float
+double 				Double
+char 				Character
+
+boxing --> primitive ke reference
+	int a = 1000;
+	Integer wa = new Integer(a);
+
+un-boxing --> reference ke primitive
+	cara 1:
+		String x = "2000";
+		Integer wx = new Integer(x);
+		int px = wx.intValue();
+	cara 2:
+		int px = Integer.parseInt("2000");
+
+JDK5 ---> terdapat fitur auto-boxing dan auto-unboxing
+		  sehingga perubahan dari primitive ke reference dan sebaliknya dapat dilakukan secara otomatis
+		  misal:
+		  	Integer wx = 1000;
+		  	int z = new Integer(2000);
+
+Day 2
+=====================================================================
+abstract --> class & method
+abstract class:
+- tidak dapat di instantiate
+- bisa memiliki method dengan implementasi ataupun method abstract
+abstract method:
+- method yang tidak memiliki implementasi
+- HARUS didefinisikan di abstract class
+sub-class dari abstract class HARUS mengimplementasikan semua method abstract yang ada di class tsb, ATAU sub-class tersebut dideklarasikan sebagai abstract class juga
+CARA mengimplementasikan abstract method sama dengan melakukan OVERRIDING, dengan menghilangkan kata abstract
+Syarat OVERRIDING:
+- nama method: HARUS SAMA
+- parameter: HARUS SAMA
+- return type: SAMA atau SUB-CLASS nya (covariant)
+- access modifier: SAMA atau LEBIH LUAS (more accessible)
+interface:
+di interface by default:
+- semua method: public abstract
+- semua variable: public static final
+class yang meng-implements ke interface HARUS mengimplementasikan semua method abstract-nya, ATAU class tersebut harus di deklarasikan sebagai abstract class
+class bisa meng-implements ke lebih dari satu interface
+
+final:
+- variable: tidak dapat diubah nilainya (constant)
+- method: tidak dapat di override
+- class: tidak dapat di extends
+
+member dari sebuah class, dapat dibedakan menjadi 2:
+- instance member --> non static
+	untuk mengakses instance member, diperlukan instance / object dari class tersebut
+	instance variable nilainya unik antara object yang satu dengan yang lain
+- class member --> static
+	untuk mengakses class member dapat langsung menggunakan nama class nya (tidak perlu instance dari class)
+	static variable tidak dapat digunakan sebagai attribute pembeda antara object yang satu dengan yang lain (nilai nya akan digunakan bersama)
+
+Collections
+-----------------------------------------
+- Set
+	* un-ordered (tidak ada urutan / acak)
+	* tidak boleh ada duplikasi 
+- List
+	* ordered
+	* boleh ada duplikasi
+- Map
+	* setiap element terdiri dari sepasang key - value
+	* key element yang satu dengan yang lain HARUS unik
+	* satu key hanya dapat memiliki satu value
+
+Bagaimana dua object dikatakan duplicate / identik?
+Jika memenuhi kedua syarat berikut:
+- jika nilai dari hashCode() nya sama
+- jika dibandingkan dengan equals() mengembalikan nilai true
+
+Java 5 --- Generics --> membatasi type element yang dapat dimasukkan
+		ke dalam collections
+
+java.util:
+- Collections
+- Arrays		
+
+Sorting:
+- Comparable -- natural ordering
+- Comparator -- custom ordering
+
+Day 3
+=====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
