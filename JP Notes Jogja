@@ -276,6 +276,43 @@ Sorting:
 Day 3
 =====================================================================
 
+G U I
+- component
+- container
+	* window -- BorderLayout
+	* panel -- FlowLayout
+- layout manager
+
+Exception
+--------------
+Object yang digunakan untuk menangani kondisi yang tidak diharapkan pada saat program dieksekusi.
+Ada 2 kategori exception:
+- checked exception  ---> yang wajib ditangani
+	semua subclass dari Exception, kecuali RuntimeException
+
+- unchecked exception ---> tidak harus ditangani
+	semua subclass dari RuntimeException
+	semua subclass dari Error
+
+Assertions --- assert (JDK1.4) --- testing
+
+java -ea NamaClass
+
+assert boolean_expr;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
