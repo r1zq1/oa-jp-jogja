@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.dvdlibrary.domain.DVDException;
 import com.dvdlibrary.domain.DVDItem;
 
-public interface DVDLibraryService {
+public interface DVDLibrary {
 	void addDVDItem(DVDItem item) throws DVDException;
 	void updateDVDItem(DVDItem item) throws DVDException;
 	void removeDVDItem(DVDItem item) throws DVDException;

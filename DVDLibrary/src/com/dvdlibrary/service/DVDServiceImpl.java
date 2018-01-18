@@ -8,7 +8,7 @@ import com.dvdlibrary.domain.DVDException;
 import com.dvdlibrary.domain.DVDItem;
 import com.dvdlibrary.domain.Genre;
 
-public class DVDServiceImpl implements DVDLibraryService{
+public class DVDServiceImpl implements DVDLibrary{
 	private ArrayList<DVDItem> dvds;
 	private final static DVDServiceImpl instance =
 			new DVDServiceImpl();

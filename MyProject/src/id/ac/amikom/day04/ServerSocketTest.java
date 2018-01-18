@@ -3,13 +3,12 @@ package id.ac.amikom.day04;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerSocketTest {
 	public static void main(String[] args) {
 		try {
-			ServerSocket ss = new ServerSocket(5432);
+			java.net.ServerSocket ss = new java.net.ServerSocket(5432);
 			System.out.println("Server started ...");
 			while(true) {
 				Socket s = ss.accept();
